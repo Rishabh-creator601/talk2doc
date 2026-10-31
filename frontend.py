@@ -4,7 +4,7 @@ import  requests
 
 
 
-MAIN_API =  "http://127.0.0.1:8000"
+MAIN_API = st.secrets.get("BACKEND_URL", "http://127.0.0.1:8000")   # cloud URL online, localhost on your PC
 
 API_URL =  f"{MAIN_API}/upload"
 vector_URL =  f"{MAIN_API}/vectordb"
