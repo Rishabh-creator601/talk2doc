@@ -57,7 +57,7 @@ def upload_page():
                 status_file =  requests.post(API_URL,files=files).json()
                 
                 if "message" not in status_file:
-                    st.error(f"Upload failed ({status_file.status_code}): {status_file.get('detail', status_file)}")
+                    st.error(f"Upload failed {status_file.get('detail', status_file)}")
                     st.caption(f"URL used: {API_URL}")
                     return
 
