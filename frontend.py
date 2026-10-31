@@ -4,6 +4,8 @@ import  requests
 
 
 
+
+# by ai for deployment purpose 
 MAIN_API = st.secrets.get("BACKEND_URL", "http://127.0.0.1:8000")   # cloud URL online, localhost on your PC
 
 API_URL =  f"{MAIN_API}/upload"
@@ -25,6 +27,7 @@ if not "messages" in st.session_state:
 if not "query_count" in st.session_state:    
     st.session_state["query_count"] = 0
     
+
     
     
     
@@ -56,10 +59,11 @@ def upload_page():
             
                 status_file =  requests.post(API_URL,files=files).json()
                 
-                if "message" not in status_file:
-                    st.error(f"Upload failed {status_file.get('detail', status_file)}")
-                    st.caption(f"URL used: {API_URL}")
-                    return
+                # in case for debugging 
+                # if "message" not in status_file:
+                #     st.error(f"Upload failed {status_file.get('detail', status_file)}")
+                #     st.caption(f"URL used: {API_URL}")
+                #     return
 
                 pages =  status_file["message"] 
                 
@@ -83,9 +87,14 @@ def answer_the_query(query):
     try :
         response =  requests.get(askqa,{"ques":query}).json()
         
+        if not "message" in response:
+            st.write(response)
+        
         return response["message"]
     
     except:
+        
+        
         
         return "Can't answer the question"
         
