@@ -3,7 +3,7 @@
  
 # Chat with documents 
 
-A free RAG ML portal where you can ask any 2  queries for free 
+A free RAGML-based, Streamlit-based application where you can upload a document and chat with the document.
 
 # Tech stack 
 
